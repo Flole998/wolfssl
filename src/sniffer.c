@@ -5195,7 +5195,8 @@ static int CheckHeaders(IpInfo* ipInfo, TcpInfo* tcpInfo, const byte* packet,
 
 #ifndef WOLFSSL_SNIFFER_WATCH
     if (checkReg &&
-         !IsPortRegistered(tcphdr->srcPort) && !IsPortRegistered(tcphdr->dstPort)) {
+         !IsPortRegistered(tcpInfo->srcPort) &&
+            !IsPortRegistered(tcpInfo->dstPort)) {
         SetError(SERVER_PORT_NOT_REG_STR, error, NULL, 0);
         return -1;
     }
